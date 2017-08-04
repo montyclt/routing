@@ -31,9 +31,7 @@ class ImplicitRouteBinding
 
             $model = $container->make($parameter->getClass()->name);
 
-            $route->setParameter($parameterName, $model->where(
-                $model->getRouteKeyName(), $parameterValue
-            )->firstOrFail());
+            $route->setParameter($parameterName, $model->resolve($parameterValue));
         }
     }
 
